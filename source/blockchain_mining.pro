@@ -10,9 +10,11 @@ CONFIG += c++17
 
 SOURCES += \
     main.cpp \
+    single_threaded_miner.cpp \
     widget.cpp
 
 HEADERS += \
+    single_threaded_miner.h \
     widget.h
 
 # Default rules for deployment.

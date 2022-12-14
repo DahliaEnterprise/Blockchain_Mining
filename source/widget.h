@@ -4,6 +4,10 @@
 #include <QWidget>
 #include <QTcpSocket>
 #include <QHostAddress>
+#include <QJsonObject>
+#include <QJsonDocument>
+
+#include "single_threaded_miner.h"
 
 class Widget : public QWidget
 {
@@ -17,6 +21,10 @@ public:
 
 private:
     QTcpSocket * tcp_blockchain_channel;
+
+    uint mining_mode;
+
+    single_threaded_miner * miner;
 
 private slots:
     void new_connection();
