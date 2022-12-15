@@ -30,6 +30,7 @@ private slots:
     void new_connection();
     void ready_read();
     void errorOccurred(QAbstractSocket::SocketError socketError);
+    void block_found(QByteArray block_hash, QByteArray exact_message);
 
 };
 #endif // WIDGET_H

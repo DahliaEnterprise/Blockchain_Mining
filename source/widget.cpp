@@ -13,6 +13,7 @@ void Widget::initialize()
 {
     mining_mode = 0;
     miner = new single_threaded_miner();
+    connect(miner, SIGNAL(block_found(QByteArray, QByteArray)), this, SLOT(block_found(QByteArray, QByteArray)));
 
     tcp_blockchain_channel = new QTcpSocket();
     tcp_blockchain_channel->connectToHost(QHostAddress(QString("127.0.0.1")), 2100);
@@ -36,26 +37,33 @@ void Widget::new_connection()
 
 void Widget::ready_read()
 {
+    //Incoming raw message
     QByteArray message_raw = tcp_blockchain_channel->readAll();
-    QJsonDocument message_jdoc = QJsonDocument::fromJson(message_raw);
-    QJsonObject message_jobj = message_jdoc.object();
-    QString largest_block_height = message_jobj.value(QString("largest_block_height")).toString();
-    quint64 largest_block_height_uint64 = largest_block_height.toULongLong();
-    if(largest_block_height_uint64 == 0)
-    {
-        //The blockchain is accepting an initial block.
-        mining_mode = 1;
-        miner->initialize();
-        miner->mine_in_the_background();
+        //Convert to JSON parseable object.
+        QJsonDocument message_jdoc = QJsonDocument::fromJson(message_raw);
+        QJsonObject message_jobj = message_jdoc.object();
 
-    }else if(largest_block_height_uint64 > 0)
-    {
-        //The blockchain is only accepting next (valid) blocks.
-        mining_mode = 2;
-    }
+        miner->initialize(message_jobj);
+        miner->mine_in_the_background();
 }
 
 void Widget::errorOccurred(QAbstractSocket::SocketError socketError)
 {
     qDebug() << "ERROR";
+}
+
+void Widget::block_found(QByteArray block_hash, QByteArray exact_message)
+{
+    QJsonObject block_found;
+    block_found.insert(QString("request"), QJsonValue(QString("block_found")));
+    QString block_hash_hex;
+    block_hash_hex.append(block_hash.toHex());
+    block_found.insert(QString("hash"), QJsonValue(block_hash_hex));
+
+    QString message;
+    message.append(exact_message);
+    block_found.insert(QString("message"), QJsonValue(message));
+
+    QByteArray tcp_message = QJsonDocument(block_found).toJson(QJsonDocument::Compact);
+    tcp_blockchain_channel->write(tcp_message);
 }

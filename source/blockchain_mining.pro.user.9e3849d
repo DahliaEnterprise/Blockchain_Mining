@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE QtCreatorProject>
-<!-- Written by QtCreator 9.0.1, 2022-12-15T14:09:16. -->
+<!-- Written by QtCreator 9.0.0, 2022-12-14T14:57:00. -->
 <qtcreator>
  <data>
   <variable>EnvironmentId</variable>
-  <value type="QByteArray">{8e7fefc0-75e7-44a3-aaef-5eb8800f263b}</value>
+  <value type="QByteArray">{9e3849d6-bf49-4ab2-973c-6f92aec04836}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.ActiveTarget</variable>
@@ -236,12 +236,14 @@
     <valuelist type="QVariantList" key="CustomOutputParsers"/>
     <value type="int" key="PE.EnvironmentAspect.Base">2</value>
     <valuelist type="QVariantList" key="PE.EnvironmentAspect.Changes"/>
-    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">ProjectExplorer.CustomExecutableRunConfiguration</value>
-    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey"></value>
+    <value type="QString" key="ProjectExplorer.ProjectConfiguration.Id">Qt4ProjectManager.Qt4RunConfiguration:C:/Users/243/Documents/GitHub/Blockchain_Mining/source/blockchain_mining.pro</value>
+    <value type="QString" key="ProjectExplorer.RunConfiguration.BuildKey">C:/Users/243/Documents/GitHub/Blockchain_Mining/source/blockchain_mining.pro</value>
     <value type="bool" key="RunConfiguration.UseCppDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseCppDebuggerAuto">true</value>
+    <value type="bool" key="RunConfiguration.UseLibrarySearchPath">true</value>
     <value type="bool" key="RunConfiguration.UseQmlDebugger">false</value>
     <value type="bool" key="RunConfiguration.UseQmlDebuggerAuto">true</value>
+    <value type="QString" key="RunConfiguration.WorkingDirectory.default">C:/Users/243/Documents/GitHub/Blockchain_Mining/build-blockchain_mining-Desktop_Qt_6_4_1_MinGW_64_bit-Debug</value>
    </valuemap>
    <value type="qlonglong" key="ProjectExplorer.Target.RunConfigurationCount">1</value>
   </valuemap>
